@@ -45,6 +45,7 @@ class database extends alerts{
 		private $drinksTable = "baridadrinks";
 		private $cartTable = "baridacart";
 		private $bookingTable = "bookings";
+		private $pagesDataTable = "pages_data";
 		private $baridaMpesaTable = "baridampesa";
 		private $paymentTable = "baridareservepayment";
 		private $floorplanTable = "floorplan";
@@ -58,7 +59,7 @@ class database extends alerts{
 
 		public $booking_name,$booking_id,$p_owner_id,$booking_phone,$booking_email,$booking_message;
 		
-		public $fetched_search_array;
+		public $fetched_search_array,$fetched_page_data;
 		
 		public $fetched_Pzip,$fetched_PfurnishType,$fetched_PwindowsType,$fetched_PheatingType,$fetched_PnearestAmenities,$fetched_P_epcImage,$fetched_PVideo,$fetched_PAttachment,$fetched_Pcategory,$fetched_PletDate,$fetched_PownershipType,$fetched_PsaleType;
 		
@@ -1030,6 +1031,36 @@ class database extends alerts{
 		return $sql;
 	    
 	}
+
+	public function update_pages_data_table($page_info,$page_category)
+		{
+		    
+			    
+    			$this->stmt = $this->dbase->prepare("UPDATE $this->pagesDataTable SET Data=? WHERE PageID=? ");
+			
+        			$this->stmt->bindParam(1,$page_info);
+        			$this->stmt->bindParam(2,$page_category);
+        		
+        			$this->stmt->execute(); 
+        
+        			if($this->stmt) {
+        				return true;
+        			} else {
+        				return false;
+        			} 
+    			
+		}
+
+		public function get_pages_data_details($page_category)
+		{
+
+			$sql = $this->dbase->query("SELECT * FROM $this->pagesDataTable WHERE PageID='$page_category' ");
+
+			foreach($sql as $row) {
+				$this->fetched_page_data = $row["Data"];
+			}
+
+		}	
 
 		public function update_profile_pic($user_id)
 		{

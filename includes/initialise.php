@@ -6,7 +6,7 @@ define("DS", DIRECTORY_SEPARATOR);
 
 error_reporting(E_ALL); // Error engine - always ON!
 
-ini_set('display_errors', false); // Error display - OFF in production env or real server
+ini_set('display_errors', true); // Error display - OFF in production env or real server
 
 ini_set('log_errors', TRUE); // Error logging
 

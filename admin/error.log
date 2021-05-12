@@ -1,0 +1,2 @@
+[12-May-2021 19:27:50 Africa/Nairobi] PHP Warning:  include(code_includes/scripts_admin.php): failed to open stream: No such file or directory in C:\xampp\htdocs\House rex\admin\pages.php on line 173
+[12-May-2021 19:27:50 Africa/Nairobi] PHP Warning:  include(): Failed opening 'code_includes/scripts_admin.php' for inclusion (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\House rex\admin\pages.php on line 173
