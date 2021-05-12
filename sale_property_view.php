@@ -2,7 +2,7 @@
 
 require_once("includes/initialise.php");
 
-$formatter = new NumberFormatter('en_GB',  NumberFormatter::CURRENCY);
+//$formatter = new NumberFormatter('en_GB',  NumberFormatter::CURRENCY);
 
 if(isset($_GET["id"])) {
     
@@ -472,7 +472,7 @@ function geocodeAddressForStreetView(geocoder) {
 				<div class="col-lg-5 col-xl-4">
 					<div class="single_property_social_share">
 						<div class="price float-left fn-400">
-							<h2><?php echo $formatter->formatCurrency($database->fetched_Pprice, 'EUR'); ?> </h2>
+							<h2>£ <?php echo $database->fetched_Pprice; ?> </h2>
 						</div>
 						<div class="spss mt20 text-right tal-400">
 							<ul class="mb0">
