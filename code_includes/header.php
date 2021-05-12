@@ -12,7 +12,7 @@
 		                <span class="icon-bar"></span>
 		            </button>
 		        </div>
-		        <a href="#" class="navbar_brand float-left dn-smd">
+		        <a href="index.php" class="navbar_brand float-left dn-smd">
 		            <img class="logo1 img-fluid" src="images/logo.png" alt="logo.png">
 		            <img class="logo2 img-fluid" src="images/logo2.png" alt="logo2.png">
 		            <span style="color:#001a75">house rex</span>
