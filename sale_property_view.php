@@ -235,6 +235,7 @@ function geocodeAddressForStreetView(geocoder) {
     
 <div class="wrapper">
 	
+	<div class="preloader"></div>
 	
 	<?php include("code_includes/header.php");?>
 

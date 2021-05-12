@@ -99,7 +99,8 @@ if(isset($_GET["id"])) {
     
     
 <div class="wrapper">
-	<!--<div class="preloader"></div>-->
+	
+	<div class="preloader"></div>
 	
 	<?php include("code_includes/header.php");?>
 
