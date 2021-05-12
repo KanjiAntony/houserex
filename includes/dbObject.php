@@ -1,8 +1,8 @@
 <?php
 
 define("server","localhost");
-define("database","shamalan_rex");
-define("user","shamalan_ShamaD");
-define("pass","Martinez0770@");
+define("database","house_rex");
+define("user","root");
+define("pass","Rex@2021Kanji");
 
 ?>
