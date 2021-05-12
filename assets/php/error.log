@@ -1,0 +1,46 @@
+[12-May-2021 16:34:55 Africa/Nairobi] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000]: General error: 1366 Incorrect integer value: '' for column 'PstartPrice' at row 1 in /var/www/houserex.co.uk/includes/database.php:635
+Stack trace:
+#0 /var/www/houserex.co.uk/includes/database.php(635): PDOStatement->execute()
+#1 /var/www/houserex.co.uk/assets/php/start_creating_listing.php(89): database->create_listing()
+#2 {main}
+  thrown in /var/www/houserex.co.uk/includes/database.php on line 635
+[12-May-2021 16:38:07 Africa/Nairobi] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000]: General error: 1366 Incorrect integer value: '' for column 'PstartPrice' at row 1 in /var/www/houserex.co.uk/includes/database.php:635
+Stack trace:
+#0 /var/www/houserex.co.uk/includes/database.php(635): PDOStatement->execute()
+#1 /var/www/houserex.co.uk/assets/php/start_creating_listing.php(89): database->create_listing()
+#2 {main}
+  thrown in /var/www/houserex.co.uk/includes/database.php on line 635
+[12-May-2021 16:44:11 Africa/Nairobi] PHP Fatal error:  Uncaught PDOException: SQLSTATE[22007]: Invalid datetime format: 1292 Incorrect date value: '' for column 'PletDate' at row 1 in /var/www/houserex.co.uk/includes/database.php:635
+Stack trace:
+#0 /var/www/houserex.co.uk/includes/database.php(635): PDOStatement->execute()
+#1 /var/www/houserex.co.uk/assets/php/start_creating_listing.php(89): database->create_listing()
+#2 {main}
+  thrown in /var/www/houserex.co.uk/includes/database.php on line 635
+[12-May-2021 16:47:32 Africa/Nairobi] PHP Fatal error:  Uncaught PDOException: SQLSTATE[01000]: Warning: 1265 Data truncated for column 'Psize' at row 1 in /var/www/houserex.co.uk/includes/database.php:635
+Stack trace:
+#0 /var/www/houserex.co.uk/includes/database.php(635): PDOStatement->execute()
+#1 /var/www/houserex.co.uk/assets/php/start_creating_listing.php(89): database->create_listing()
+#2 {main}
+  thrown in /var/www/houserex.co.uk/includes/database.php on line 635
+[12-May-2021 16:53:55 Africa/Nairobi] PHP Warning:  move_uploaded_file(Uploaded/Attachments/The House Rex Platform.pdf): failed to open stream: Permission denied in /var/www/houserex.co.uk/assets/php/upload_attachment_media.php on line 35
+[12-May-2021 16:53:55 Africa/Nairobi] PHP Warning:  move_uploaded_file(): Unable to move '/tmp/phpVMffNY' to 'Uploaded/Attachments/The House Rex Platform.pdf' in /var/www/houserex.co.uk/assets/php/upload_attachment_media.php on line 35
+[12-May-2021 16:54:23 Africa/Nairobi] PHP Warning:  move_uploaded_file(Uploaded/Attachments/The House Rex Platform.pdf): failed to open stream: Permission denied in /var/www/houserex.co.uk/assets/php/upload_attachment_media.php on line 35
+[12-May-2021 16:54:23 Africa/Nairobi] PHP Warning:  move_uploaded_file(): Unable to move '/tmp/php37IUBf' to 'Uploaded/Attachments/The House Rex Platform.pdf' in /var/www/houserex.co.uk/assets/php/upload_attachment_media.php on line 35
+[12-May-2021 16:54:55 Africa/Nairobi] PHP Notice:  Undefined index: PAttachment in /var/www/houserex.co.uk/assets/php/upload_attachment_media.php on line 6
+[12-May-2021 16:54:55 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /var/www/houserex.co.uk/assets/php/upload_attachment_media.php on line 6
+[12-May-2021 16:54:55 Africa/Nairobi] PHP Warning:  count(): Parameter must be an array or an object that implements Countable in /var/www/houserex.co.uk/assets/php/upload_attachment_media.php on line 6
+[12-May-2021 16:57:22 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /var/www/houserex.co.uk/assets/php/fetch_all_properties.php on line 75
+[12-May-2021 16:58:16 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /var/www/houserex.co.uk/assets/php/fetch_all_properties.php on line 75
+[12-May-2021 17:17:24 Africa/Nairobi] PHP Fatal error:  Uncaught PDOException: SQLSTATE[22001]: String data, right truncated: 1406 Data too long for column 'Pdetails' at row 1 in /var/www/houserex.co.uk/includes/database.php:635
+Stack trace:
+#0 /var/www/houserex.co.uk/includes/database.php(635): PDOStatement->execute()
+#1 /var/www/houserex.co.uk/assets/php/start_creating_listing.php(89): database->create_listing()
+#2 {main}
+  thrown in /var/www/houserex.co.uk/includes/database.php on line 635
+[12-May-2021 17:17:56 Africa/Nairobi] PHP Fatal error:  Uncaught PDOException: SQLSTATE[22001]: String data, right truncated: 1406 Data too long for column 'Pdetails' at row 1 in /var/www/houserex.co.uk/includes/database.php:635
+Stack trace:
+#0 /var/www/houserex.co.uk/includes/database.php(635): PDOStatement->execute()
+#1 /var/www/houserex.co.uk/assets/php/start_creating_listing.php(89): database->create_listing()
+#2 {main}
+  thrown in /var/www/houserex.co.uk/includes/database.php on line 635
+[12-May-2021 17:27:27 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /var/www/houserex.co.uk/assets/php/fetch_user_properties.php on line 28

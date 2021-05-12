@@ -72,7 +72,7 @@ if(isset($_GET["id"])) {
 		position: relative;
 	}
 	.gallery_item .gallery_overlay{
-		background-color: rgba(255, 90, 95, .8);
+		background-color: rgba(16,212,142, .8);
 		border-radius: 5px;
 		bottom: 0;
 		left: 0;

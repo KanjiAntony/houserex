@@ -129,7 +129,7 @@ require_once("includes/initialise.php");
 									<div class="col-lg-6 col-xl-6" id="create_listing_let_available_date_all" style="display:none;">
 										<div class="my_profile_setting_input form-group">
 									    	<label>Let available date</label>
-									    	<input type="date" class="form-control" id="create_listing_let_available_date" >
+									    	<input type="date" class="form-control" id="create_listing_let_available_date" value="<?php echo date('Y-m-d'); ?>">
 										</div>
 									</div>
 									

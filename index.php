@@ -260,16 +260,11 @@ require_once("includes/initialise.php");
 			<div class="row posr">
 				<div class="col-lg-12">
 					<div class="home_content home4">
-						
+					
+						<br/><br/><br/>
 						<div class="home_adv_srch_opt home4">
-							<ul class="nav nav-pills" id="pills-tab" role="tablist">
-								<li class="nav-item">
-									<a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Buy</a>
-								</li>
-								<li class="nav-item">
-									<a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Rent</a>
-								</li>
-							</ul>
+						<br/><br/>
+							
 							<div class="tab-content home1_adsrchfrm" id="pills-tabContent">
 								<div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
 									<div class="home1-advnc-search home4">
@@ -762,7 +757,7 @@ require_once("includes/initialise.php");
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="home-text text-center">
-						<h2 class="fz55">Property on the Go, The Quicker The Better</h2>
+						<h3 class="fz45">Property on the Go, The Quicker The Better</h3>
 						<p class="fz18 color-white">We are on a mission to support 1 million UK residents to buy and sell their homes.</p>
 					</div>
 					<!-- <h4 class="text-center color-white fw600 mb25 mb0-520">What are you looking for?</h4>
