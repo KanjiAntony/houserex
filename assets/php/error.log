@@ -44,3 +44,14 @@ Stack trace:
 #2 {main}
   thrown in /var/www/houserex.co.uk/includes/database.php on line 635
 [12-May-2021 17:27:27 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /var/www/houserex.co.uk/assets/php/fetch_user_properties.php on line 28
+[12-May-2021 18:43:12 Africa/Nairobi] PHP Warning:  Invalid argument supplied for foreach() in /var/www/houserex.co.uk/assets/php/fetch_user_properties.php on line 20
+[12-May-2021 18:43:24 Africa/Nairobi] PHP Warning:  Invalid argument supplied for foreach() in /var/www/houserex.co.uk/assets/php/fetch_user_properties.php on line 20
+[12-May-2021 18:43:39 Africa/Nairobi] PHP Warning:  Invalid argument supplied for foreach() in /var/www/houserex.co.uk/assets/php/fetch_user_properties.php on line 20
+[12-May-2021 18:46:59 Africa/Nairobi] PHP Warning:  Invalid argument supplied for foreach() in /var/www/houserex.co.uk/assets/php/fetch_user_properties.php on line 20
+[12-May-2021 18:47:17 Africa/Nairobi] PHP Warning:  Invalid argument supplied for foreach() in /var/www/houserex.co.uk/assets/php/fetch_user_properties.php on line 20
+[12-May-2021 18:47:39 Africa/Nairobi] PHP Warning:  Invalid argument supplied for foreach() in /var/www/houserex.co.uk/assets/php/fetch_user_properties.php on line 20
+[12-May-2021 18:47:48 Africa/Nairobi] PHP Warning:  Invalid argument supplied for foreach() in /var/www/houserex.co.uk/assets/php/fetch_user_properties.php on line 20
+[12-May-2021 18:47:56 Africa/Nairobi] PHP Warning:  Invalid argument supplied for foreach() in /var/www/houserex.co.uk/assets/php/fetch_user_properties.php on line 20
+[12-May-2021 18:59:49 Africa/Nairobi] PHP Warning:  Invalid argument supplied for foreach() in /var/www/houserex.co.uk/assets/php/fetch_user_properties.php on line 20
+[13-May-2021 13:01:10 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /var/www/houserex.co.uk/assets/php/fetch_all_sale_properties.php on line 21
+[13-May-2021 22:56:54 Africa/Nairobi] PHP Warning:  Invalid argument supplied for foreach() in /var/www/houserex.co.uk/assets/php/fetch_user_properties.php on line 20
