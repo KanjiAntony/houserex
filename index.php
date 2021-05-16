@@ -122,13 +122,14 @@ require_once("includes/initialise.php");
 					  		</div>
 					  		<div class="col-lg-6 col-xl-6">
 								<div class="login_form">
-									<form method="post" id="login_user">
+									
 										<div class="heading">
 											<h4>Login</h4>
 										</div>
 										<div class="row mt25">
 											<div class="col-lg-12">
 												<button class="btn btn-fb btn-block" onlogin="checkLoginState();"><i class="fa fa-facebook float-left mt5"></i> Login with Facebook</button>
+												<fb:login-button class="btn btn-fb btn-block" scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
 											</div>
 											<!--<fb:login-button class="btn btn-fb btn-block" scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>-->
 											<div class="col-lg-12">
@@ -136,7 +137,7 @@ require_once("includes/initialise.php");
 											</div>
 										</div>
 										<hr>
-										
+										<form method="post" id="login_user">	
 										<h2 id="login_dummy_loading_text"></h2>
                                             <h2 id="login_dummy_loading" style='color:#1d293e;'></h2>
                     
@@ -172,7 +173,7 @@ require_once("includes/initialise.php");
 									<div class="heading">
 										<h4>Register</h4>
 									</div>
-									<form method="post" id="register_user">
+									
 										<div class="row">
 											<div class="col-lg-12">
 												<button type="submit" class="btn btn-block btn-fb"><i class="fa fa-facebook float-left mt5"></i> Login with Facebook</button>
@@ -182,7 +183,7 @@ require_once("includes/initialise.php");
 											</div>
 										</div>
 										
-										
+									<form method="post" id="register_user">	
 										<hr>
 										
 										<h2 id="reg_dummy_loading_text"></h2>
