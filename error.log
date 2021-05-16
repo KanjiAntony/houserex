@@ -1,0 +1,11 @@
+[13-May-2021 06:53:38 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to a member function setAttribute() on null in C:\xampp\htdocs\House rex\includes\database.php:104
+Stack trace:
+#0 C:\xampp\htdocs\House rex\includes\database.php(82): database->connect()
+#1 C:\xampp\htdocs\House rex\includes\database.php(1391): database->__construct()
+#2 C:\xampp\htdocs\House rex\includes\initialise.php(26): require_once('C:\\xampp\\htdocs...')
+#3 C:\xampp\htdocs\House rex\about.php(3): require_once('C:\\xampp\\htdocs...')
+#4 {main}
+  thrown in C:\xampp\htdocs\House rex\includes\database.php on line 104
+[16-May-2021 18:35:00 Africa/Nairobi] PHP Warning:  Invalid argument supplied for foreach() in C:\xampp\htdocs\House rex\sale_property_view.php on line 916
+[16-May-2021 19:33:17 Africa/Nairobi] PHP Warning:  Invalid argument supplied for foreach() in C:\xampp\htdocs\House rex\rent_property_view.php on line 919
+[16-May-2021 19:33:44 Africa/Nairobi] PHP Warning:  Invalid argument supplied for foreach() in C:\xampp\htdocs\House rex\sale_property_view.php on line 916
