@@ -31,14 +31,128 @@ require_once("includes/initialise.php");
 <meta name="msapplication-TileColor" content="#00a300">
 <meta name="theme-color" content="#ffffff">
 
+<meta name="google-signin-client_id" content="678045316263-8u0upaj68m1pjti41tfr852j4671efok.apps.googleusercontent.com">
+
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+<script src="https://apis.google.com/js/api:client.js"></script>
+  <script>
+  var googleUser = {};
+  var startGoogleApp = function() {
+    gapi.load('auth2', function(){
+      // Retrieve the singleton for the GoogleAuth library and set up the client.
+      auth2 = gapi.auth2.init({
+        client_id: '678045316263-8u0upaj68m1pjti41tfr852j4671efok.apps.googleusercontent.com',
+        cookiepolicy: 'single_host_origin',
+        // Request scopes in addition to 'profile' and 'email'
+        //scope: 'additional_scope'
+      });
+      attachSignin(document.getElementById('customBtn'));
+    });
+  };
+
+  function attachSignin(element) {
+    console.log(element.id);
+    auth2.attachClickHandler(element, {},
+        function(googleUser) {
+
+			//_("login_status").innerHTML = "Signed in: " + googleUser.getBasicProfile().getImageUrl();
+
+			googleLoginAjax(googleUser);
+
+        }, function(error) {
+          alert(JSON.stringify(error, undefined, 2));
+        });
+  }
+
+						function googleLoginAjax(googleUser) {
+							
+							document.getElementById("login_dummy_loading").innerHTML = "Google login, please wait";
+							
+							document.getElementById("login_dummy_loading_text").innerHTML = "<div class='d-flex justify-content-center'><div class='spinner-border text-dark' role='status'></div></div>";
+
+							var picExtensionUrl = "assets/php/validate_social_media_user.php";
+
+							var picQuery = "name="+googleUser.getBasicProfile().getName()+"&email="+googleUser.getBasicProfile().getEmail()+"&reg_type=Google"+"&profile_pic="+googleUser.getBasicProfile().getImageUrl();
+
+							var picRequest;
+
+								try {
+
+									// request for normal browsers
+										picRequest = new XMLHttpRequest();
+								} catch(e) {
+
+									try {
+										picRequest = new ActiveXObject("Msxml2.XMLHTTP")
+									} catch(e) {
+										
+										try {
+											picRequest = new ActiveXObject("Microsoft.XMLHTTP");
+										} catch(e) {
+											alert("Browser has broken");
+											return false;
+										}
+
+									}
+								}
+								
+
+						//	picRequest.upload.addEventListener("progress", progressHandler, false);
+							picRequest.addEventListener("load", function(ev) {
+								
+								if(ev.target.responseText == "true") {
+									window.location.href = "page-add-new-property.php";
+								} else {
+									_("login_status").innerHTML = ev.target.responseText;
+								}
+							
+								document.getElementById("login_dummy_loading_text").style.display = "none";
+								document.getElementById("login_dummy_loading").style.display = "none";
+							});
+							
+							picRequest.addEventListener("error", function(ev) {
+								_("login_status").innerHTML = "Login failed";
+								document.getElementById("login_dummy_loading_text").innerHTML = "Failed";
+								document.getElementById("login_dummy_loading").style.display = "none";
+							});
+							
+							picRequest.addEventListener("abort", function(ev) {
+								_("login_status").innerHTML = "Login aborted";
+								document.getElementById("login_dummy_loading_text").innerHTML = "Cancelled";
+								document.getElementById("login_dummy_loading").style.display = "none";
+							});
+
+							//open connection
+							picRequest.open("POST",picExtensionUrl,true);
+
+							picRequest.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+							picRequest.send(picQuery);
+							
+						}
+						
+					
+					function _(el) {
+								return document.getElementById(el);
+						}
+
+
+  </script>	
     
 <script>
+
+function onSignIn(googleUser) {
+  var profile = googleUser.getBasicProfile();
+  console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+  console.log('Name: ' + profile.getName());
+  console.log('Image URL: ' + profile.getImageUrl());
+  console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+}	
 
   function statusChangeCallback(response) {  // Called with the results from FB.getLoginStatus().
     console.log('statusChangeCallback');
@@ -67,6 +181,14 @@ require_once("includes/initialise.php");
       version    : 'v10.0'           // Use this Graph API version for this call.
     });
 
+	(function(d, s, id){
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) {return;}
+    js = d.createElement(s); js.id = id;
+    js.src = "https://connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+
 
     FB.getLoginStatus(function(response) {   // Called after the JS SDK has been initialized.
       statusChangeCallback(response);        // Returns the login status.
@@ -74,13 +196,99 @@ require_once("includes/initialise.php");
   };
  
   function registerAPI() {                      // Testing Graph API after login.  See statusChangeCallback() for when this call is made.
-    console.log('Welcome!  Fetching your information.... ');
     FB.api('/me', function(response) {
       console.log('Successful login for: ' + response.name);
      // document.getElementById('status').innerHTML = 'Thanks for logging in, ' + response.name + '!';
-     // window.location.href = "index.html";
+      //window.location.href = "index.html";
     });
   }
+
+  logInWithFacebook = function() {
+    FB.login(function(response) {
+      if (response.authResponse) {
+
+		FB.api('/me', { locale: 'en_US', fields: 'name, email' }, function(response) {
+
+
+							fbLoginAjax();
+
+						function fbLoginAjax() {
+							
+							document.getElementById("login_dummy_loading").innerHTML = "Facebook login, please wait";
+							
+							document.getElementById("login_dummy_loading_text").innerHTML = "<div class='d-flex justify-content-center'><div class='spinner-border text-dark' role='status'></div></div>";
+
+							var picExtensionUrl = "assets/php/validate_social_media_user.php";
+
+							var picQuery = "name="+response.name+"&email="+response.email+"&reg_type=Facebook"+"&profile_pic="+response.id;
+
+							var picRequest;
+
+								try {
+
+									// request for normal browsers
+										picRequest = new XMLHttpRequest();
+								} catch(e) {
+
+									try {
+										picRequest = new ActiveXObject("Msxml2.XMLHTTP")
+									} catch(e) {
+										
+										try {
+											picRequest = new ActiveXObject("Microsoft.XMLHTTP");
+										} catch(e) {
+											alert("Browser has broken");
+											return false;
+										}
+
+									}
+								}
+								
+
+						//	picRequest.upload.addEventListener("progress", progressHandler, false);
+							picRequest.addEventListener("load", function(ev) {
+								
+								if(ev.target.responseText == "true") {
+									window.location.href = "page-add-new-property.php";
+								} else {
+									_("login_status").innerHTML = ev.target.responseText;
+								}
+							
+								document.getElementById("login_dummy_loading_text").style.display = "none";
+								document.getElementById("login_dummy_loading").style.display = "none";
+							});
+							
+							picRequest.addEventListener("error", function(ev) {
+								_("login_status").innerHTML = "Login failed";
+								document.getElementById("login_dummy_loading_text").innerHTML = "Failed";
+								document.getElementById("login_dummy_loading").style.display = "none";
+							});
+							
+							picRequest.addEventListener("abort", function(ev) {
+								_("login_status").innerHTML = "Login aborted";
+								document.getElementById("login_dummy_loading_text").innerHTML = "Cancelled";
+								document.getElementById("login_dummy_loading").style.display = "none";
+							});
+
+							//open connection
+							picRequest.open("POST",picExtensionUrl,true);
+
+							picRequest.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+							picRequest.send(picQuery);
+							
+						}
+						
+					
+					function _(el) {
+								return document.getElementById(el);
+						}
+					});
+      } else {
+        alert('User cancelled login or did not fully authorize.');
+      }
+    });
+    return false;
+  };
 
 </script>
     
@@ -128,12 +336,14 @@ require_once("includes/initialise.php");
 										</div>
 										<div class="row mt25">
 											<div class="col-lg-12">
-												<button class="btn btn-fb btn-block" onlogin="checkLoginState();"><i class="fa fa-facebook float-left mt5"></i> Login with Facebook</button>
-												<fb:login-button class="btn btn-fb btn-block" scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
+												
+											<button class="btn btn-fb btn-block" onclick="logInWithFacebook();"><i class="fa fa-facebook float-left mt5"></i> Login with Facebook</button>
+
 											</div>
 											<!--<fb:login-button class="btn btn-fb btn-block" scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>-->
 											<div class="col-lg-12">
-												<button type="submit" class="btn btn-googl btn-block"><i class="fa fa-google float-left mt5"></i> Login with Google</button>
+												<button type="submit" id="customBtn" class="btn btn-googl btn-block"><i class="fa fa-google float-left mt5"></i> Login with Google</button>
+
 											</div>
 										</div>
 										<hr>
@@ -173,16 +383,7 @@ require_once("includes/initialise.php");
 									<div class="heading">
 										<h4>Register</h4>
 									</div>
-									
-										<div class="row">
-											<div class="col-lg-12">
-												<button type="submit" class="btn btn-block btn-fb"><i class="fa fa-facebook float-left mt5"></i> Login with Facebook</button>
-											</div>
-											<div class="col-lg-12">
-												<button type="submit" class="btn btn-block btn-googl"><i class="fa fa-google float-left mt5"></i> Login with Google</button>
-											</div>
-										</div>
-										
+																			
 									<form method="post" id="register_user">	
 										<hr>
 										
@@ -781,7 +982,7 @@ require_once("includes/initialise.php");
 				<div class="col-lg-12">
 					<div class="row style2">
 						<div class="col-lg-4 col-12 item">
-							<div class="why_chose_us style2" style="height:350px;">
+							<div class="why_chose_us style2" style="min-height:300px;">
                                 <h4><strong>PRIVATE SELLERS </strong></h4>
 								<div class="text-center">
 									
@@ -792,12 +993,21 @@ require_once("includes/initialise.php");
         							<p>- Get quick offers.</p>
         							
 								</div>
-								<a href="" class="btn btn-thm" data-toggle="modal" data-target=".bd-example-modal-lg">Sign up</a>
+
+								<?php
+								
+  									if(!$session->is_logged){
+								
+								?>
+								<div class="text-center" style="position:absolute;bottom:5px;margin-left:37%;">
+									<a href="" class="btn btn-thm" data-toggle="modal" data-target=".bd-example-modal-lg" >Sign up</a>
+								</div>
+								<?php } ?>
 							</div>
 						</div>
 						
 						<div class="col-lg-4 col-12 item">
-							<div class="why_chose_us style2">
+							<div class="why_chose_us style2" style="min-height:400px;">
 							    
 							    <h4><strong>FOR PROFESSIONALS</strong></h4>
 
@@ -812,12 +1022,20 @@ require_once("includes/initialise.php");
         						    
 								</div>
 								
-								<a href="" class="btn btn-thm" data-toggle="modal" data-target=".bd-example-modal-lg">Sign up</a>
+								<?php
+								
+  									if(!$session->is_logged){
+								
+								?>
+								<div class="text-center" style="position:absolute;bottom:5px;margin-left:37%;">
+									<a href="" class="btn btn-thm" data-toggle="modal" data-target=".bd-example-modal-lg" >Sign up</a>
+								</div>
+								<?php } ?>	
 							</div>
 						</div>
 						
 						<div class="col-lg-4 col-12 item" >
-							<div class="why_chose_us style2" style="height:350px;">
+							<div class="why_chose_us style2" style="min-height:300px;">
 							    
 							    <h4><strong>FOR BUYERS AND RENTERS </strong></h4>
 							   
@@ -830,7 +1048,15 @@ require_once("includes/initialise.php");
         							
 								</div>
 								
-								<a href="" class="btn btn-thm" data-toggle="modal" data-target=".bd-example-modal-lg">Sign up</a>
+								<?php
+								
+  									if(!$session->is_logged){
+								
+								?>
+								<div class="text-center" style="position:absolute;bottom:5px;margin-left:37%;">
+									<a href="" class="btn btn-thm" data-toggle="modal" data-target=".bd-example-modal-lg" >Sign up</a>
+								</div>
+								<?php } ?>	
 							</div>
 						</div>
 
@@ -889,7 +1115,14 @@ require_once("includes/initialise.php");
             							<p>- Find an Agent/Agency</p>
             							<p>- UK House Prices Index</p>
             							<p class="text-right add_listing"><a href="">Learn more...</a></p>
-            							<a href="" class="btn btn-lg btn-thm" data-toggle="modal" data-target=".bd-example-modal-lg">Sign up</a>
+            							
+										<?php
+								
+											if(!$session->is_logged){
+										
+										?>
+											<a href="" class="btn btn-lg btn-thm" data-toggle="modal" data-target=".bd-example-modal-lg">Sign up</a>
+										<?php } ?>
 								    </div>
 								</div>
 								
@@ -996,8 +1229,11 @@ require_once("includes/initialise.php");
 <script src="assets/js/create_account.js"></script>
 <script src="assets/js/login.js"></script>
 
+<script>startGoogleApp();</script>
+
 <!-- Load the JS SDK asynchronously -->
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+<script src="https://apis.google.com/js/platform.js" async defer></script>
 
 <script src="upup.min.js"></script>
 <script>

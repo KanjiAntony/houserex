@@ -55,3 +55,18 @@ Stack trace:
 [12-May-2021 18:59:49 Africa/Nairobi] PHP Warning:  Invalid argument supplied for foreach() in /var/www/houserex.co.uk/assets/php/fetch_user_properties.php on line 20
 [13-May-2021 13:01:10 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /var/www/houserex.co.uk/assets/php/fetch_all_sale_properties.php on line 21
 [13-May-2021 22:56:54 Africa/Nairobi] PHP Warning:  Invalid argument supplied for foreach() in /var/www/houserex.co.uk/assets/php/fetch_user_properties.php on line 20
+[17-May-2021 08:33:24 Africa/Nairobi] PHP Notice:  Uninitialized string offset: 52 in /var/www/houserex.co.uk/includes/automation.php on line 24
+[17-May-2021 09:20:06 Africa/Nairobi] PHP Fatal error:  Uncaught PDOException: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'UserId' cannot be null in /var/www/houserex.co.uk/includes/database.php:1159
+Stack trace:
+#0 /var/www/houserex.co.uk/includes/database.php(1159): PDOStatement->execute()
+#1 /var/www/houserex.co.uk/assets/php/validate_social_media_user.php(28): database->insert_to_social_media_reg_table()
+#2 {main}
+  thrown in /var/www/houserex.co.uk/includes/database.php on line 1159
+[17-May-2021 09:21:49 Africa/Nairobi] PHP Fatal error:  Uncaught PDOException: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'UserId' cannot be null in /var/www/houserex.co.uk/includes/database.php:1159
+Stack trace:
+#0 /var/www/houserex.co.uk/includes/database.php(1159): PDOStatement->execute()
+#1 /var/www/houserex.co.uk/assets/php/validate_social_media_user.php(28): database->insert_to_social_media_reg_table()
+#2 {main}
+  thrown in /var/www/houserex.co.uk/includes/database.php on line 1159
+[17-May-2021 09:31:50 Africa/Nairobi] PHP Notice:  Uninitialized string offset: 52 in /var/www/houserex.co.uk/includes/automation.php on line 24
+[17-May-2021 11:48:44 Africa/Nairobi] PHP Notice:  Uninitialized string offset: 52 in /var/www/houserex.co.uk/includes/automation.php on line 24

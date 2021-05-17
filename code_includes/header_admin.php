@@ -32,10 +32,10 @@
 		            
 		            <li class="user_setting">
 						<div class="dropdown">
-	                		<a class="btn dropdown-toggle" href="#" data-toggle="dropdown"><img class="rounded-circle" src="../assets/php/<?php echo $database->session_user_pic; ?>" alt=""> <span class="dn-1199"><?php echo $database->session_username; ?></span></a>
+	                		<a class="btn dropdown-toggle" href="#" data-toggle="dropdown"><img class="rounded-circle" width="45px" height="45px" src="<?php echo $database->session_user_pic; ?>" alt=""> <span class="dn-1199"><?php echo $database->session_username; ?></span></a>
 						    <div class="dropdown-menu">
 						    	<div class="user_set_header">
-						    		<img class="float-left" src="../assets/php/<?php echo $database->session_user_pic; ?>" alt="">
+						    		<img class="float-left" width="45px" height="45px" src="<?php echo $database->session_user_pic; ?>" alt="">
 							    	<p><?php echo $database->session_username; ?> <br><span class="address"><?php echo $database->session_email; ?></span></p>
 						    	</div>
 						    	<div class="user_setting_content">
@@ -135,13 +135,13 @@
 				<li><a href="" style="color:#000;">My Message</a></li>
 				<li><a href="" style="color:#000;">My Review</a></li>
 				<li><a href="" style="color:#000;">My Favorites</a></li>
-				<li><a href="" style="color:#000;">Log out</a></li>
+				<li><a href="logout.php" style="color:#000;">Log out</a></li>
 			</ul>
 		</li>
 
 		<?php } else { ?>
 			
-			<li ><a href="#" class="btn flaticon-user btn-block btn-lg btn-thm circle" data-toggle="modal" data-target=".bd-example-modal-lg"> Login/Register</a></li>
+			<li ><a href="login.php" class="btn flaticon-user btn-block btn-lg btn-thm circle" > Login/Register</a></li>
 
 		<?php } ?>
 

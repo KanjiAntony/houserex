@@ -37,10 +37,12 @@ class database extends alerts{
 		private $regEventsTable = "baridareg";
 		private $deliveryFeeTable = "barida_delivery_fees";
 		private $regTable = "user_reg";
+		private $adminRegTable = "admin_reg";
 		private $BOregSPTable = "ibooq_bo_sp";
 		private $regAdminTable = "barida_reg_admin";
 		private $userRegTable = "baridauser";
 		private $loginTable = "user_login";
+		private $adminLoginTable = "admin_login";
 		private $reserveTable = "baridareserve";
 		private $drinksTable = "baridadrinks";
 		private $cartTable = "baridacart";
@@ -939,6 +941,20 @@ class database extends alerts{
 				return false;
 			}
 		}
+
+		public function get_all_unapproved_listings()
+		{
+
+			$state = "0";
+
+			$sql = $this->dbase->query("SELECT * FROM $this->listingTable WHERE PApproval='$state' ");
+
+			if($sql->rowCount() > 0) {
+				return $sql;
+			} else {
+				return false;
+			}
+		}
 		
 		public function get_specific_listing_floorplans($listing_id)
 		{
@@ -1105,11 +1121,13 @@ class database extends alerts{
 		public function insert_to_reg_table()
 		{
 
+			$reg_type = "Normal";
+
 			//sql query to determine if the UserId is already registered
 			$sql2 = $this->dbase->query("SELECT * FROM ".$this->regTable." WHERE UserEmail='$this->user_email' ");
 
 
-						if($sql2->rowCount() > 0) { // if it does not exist in database
+						if($sql2->rowCount() > 0) { // if it does exist in database
 						
 						
 								return false;		
@@ -1117,15 +1135,70 @@ class database extends alerts{
 
 						} else {
                                 
-                                $this->stmt = $this->dbase->prepare("INSERT INTO $this->regTable(UserId,UserName,UserEmail,UserType,Password,Approval,Date,Time) 
-																	VALUES(?,?,?,?,?,?,now(),now())");
+                                $this->stmt = $this->dbase->prepare("INSERT INTO $this->regTable(UserId,RegType,UserName,UserEmail,UserType,Password,Approval,Date,Time) 
+																	VALUES(?,?,?,?,?,?,?,now(),now())");
 
 								$this->stmt->bindParam(1,$this->user_id);
-								$this->stmt->bindParam(2,$this->username);
-								$this->stmt->bindParam(3,$this->user_email);
-								$this->stmt->bindParam(4,$this->usertype);
-								$this->stmt->bindParam(5,$this->password);
-								$this->stmt->bindParam(6,$this->approval_status);
+								$this->stmt->bindParam(2,$reg_type);
+								$this->stmt->bindParam(3,$this->username);
+								$this->stmt->bindParam(4,$this->user_email);
+								$this->stmt->bindParam(5,$this->usertype);
+								$this->stmt->bindParam(6,$this->password);
+								$this->stmt->bindParam(7,$this->approval_status);
+								$this->stmt->execute();
+
+								if($this->stmt) {
+									return true;
+								} else {
+									return false;
+								}
+
+                        
+						}
+
+		}
+
+		public function insert_to_social_media_reg_table($reg_type)
+		{
+
+
+			//sql query to determine if the UserId is already registered
+			$sql2 = $this->dbase->query("SELECT * FROM ".$this->regTable." WHERE UserEmail='$this->user_email' ");
+
+
+						if($sql2->rowCount() > 0) { // if it does exist in database
+
+							foreach($sql2 as $row) {
+								$this->fetched_email = $row["UserEmail"];
+								$this->fetched_user_id = $row["UserId"];
+								$this->fetched_user_type = $row["UserType"];
+							}
+						
+						
+							$this->stmt = $this->dbase->prepare("INSERT INTO $this->loginTable(UserId,LoginDate,LoginTime) VALUES(:userid,now(),now())");
+
+							$this->stmt->bindParam(":userid",$this->fetched_user_id);
+							$this->stmt->execute();
+		
+							if($this->stmt) {
+								return true;
+							} else {
+								return false;
+							}		
+								
+
+						} else {
+                                
+                                $this->stmt = $this->dbase->prepare("INSERT INTO $this->regTable(UserId,RegType,UserName,UserEmail,UserType,UserPic,Approval,Date,Time) 
+																	VALUES(?,?,?,?,?,?,?,now(),now())");
+
+								$this->stmt->bindParam(1,$this->user_id);
+								$this->stmt->bindParam(2,$reg_type);
+								$this->stmt->bindParam(3,$this->username);
+								$this->stmt->bindParam(4,$this->user_email);
+								$this->stmt->bindParam(5,$this->usertype);
+								$this->stmt->bindParam(6,$this->profile_pic);
+								$this->stmt->bindParam(7,$this->approval_status);
 								$this->stmt->execute();
 
 								if($this->stmt) {
@@ -1220,7 +1293,7 @@ class database extends alerts{
 		public function insert_to_login_table()
 		{
 
-			$sql = $this->dbase->query("SELECT * FROM $this->regTable WHERE UserEmail='$this->user_email' ");
+			$sql = $this->dbase->query("SELECT * FROM $this->regTable WHERE UserEmail='$this->user_email' AND RegType='Normal' ");
 
 			//if yes, fetch all the details that match the entered email and store in variables
 			if($sql->rowCount() > 0) {
@@ -1238,6 +1311,44 @@ class database extends alerts{
 				if(password_verify($this->raw_password,$this->password)) {
 
 					$this->stmt = $this->dbase->prepare("INSERT INTO $this->loginTable(UserId,LoginDate,LoginTime) VALUES(:userid,now(),now())");
+
+					$this->stmt->bindParam(":userid",$this->fetched_user_id);
+					$this->stmt->execute();
+
+					if($this->stmt) {
+						return true;
+					} else {
+						return false;
+					}
+
+				}
+
+			}
+
+
+		}
+
+		public function insert_to_admin_login_table()
+		{
+
+			$sql = $this->dbase->query("SELECT * FROM $this->adminRegTable WHERE UserEmail='$this->user_email' AND RegType='Normal' ");
+
+			//if yes, fetch all the details that match the entered email and store in variables
+			if($sql->rowCount() > 0) {
+
+				foreach($sql as $row) {
+					$this->fetched_email = $row["UserEmail"];
+					$this->fetched_user_id = $row["UserId"];
+					$this->fetched_user_type = $row["UserType"];
+				    $this->password = $row["Password"];
+				}
+
+				//confirm password
+
+				//if above condition is met, enter that data into the Login table
+				if(password_verify($this->raw_password,$this->password)) {
+
+					$this->stmt = $this->dbase->prepare("INSERT INTO $this->adminLoginTable(UserId,LoginDate,LoginTime) VALUES(:userid,now(),now())");
 
 					$this->stmt->bindParam(":userid",$this->fetched_user_id);
 					$this->stmt->execute();
@@ -1321,7 +1432,6 @@ class database extends alerts{
 						} else {
 						    
 						        return false;
-								$this->message("Use an unregistered e-mail.","Fail");
 
 						}
 
@@ -1350,11 +1460,65 @@ class database extends alerts{
 
 		}
 
+		public function get_admin_session_details($session_id)
+		{
+
+			$sql = $this->dbase->query("SELECT * FROM $this->adminRegTable WHERE UserId='$session_id' ");
+
+			foreach($sql as $row) {
+				$this->session_email = $row["UserEmail"];
+				$this->session_user_id = $row["UserId"];
+				$this->session_username = $row["UserName"];
+				$this->session_user_type = $row["UserType"];
+				$this->session_user_phone = $row["UserMobile"];
+				$this->session_user_facebook = $row["UserFacebook"];
+				$this->session_user_twitter = $row["UserTwitter"];
+				$this->session_user_linkedin = $row["UserLinkedin"];
+				$this->session_user_instagram = $row["UserInstagram"];
+				$this->session_user_description = $row["UserDescription"];
+				$this->session_user_pic = $row["UserPic"];
+				$this->session_regDate = $row["Date"];
+				$this->session_regTime = $row["Time"];
+			}
+
+		}
+
+		public function get_email_session_details($session_email)
+		{
+
+			$sql = $this->dbase->query("SELECT * FROM $this->regTable WHERE UserEmail='$session_email' ");
+
+			foreach($sql as $row) {
+				$this->session_email = $row["UserEmail"];
+				$this->session_user_id = $row["UserId"];
+				$this->session_username = $row["UserName"];
+				$this->session_user_type = $row["UserType"];
+				$this->session_user_phone = $row["UserMobile"];
+				$this->session_user_facebook = $row["UserFacebook"];
+				$this->session_user_twitter = $row["UserTwitter"];
+				$this->session_user_linkedin = $row["UserLinkedin"];
+				$this->session_user_instagram = $row["UserInstagram"];
+				$this->session_user_description = $row["UserDescription"];
+				$this->session_user_pic = $row["UserPic"];
+				$this->session_regDate = $row["Date"];
+				$this->session_regTime = $row["Time"];
+			}
+
+		}
+
 
 		public function get_all_unapproved_users()
 		{
 
 			$sql = $this->dbase->query("SELECT * FROM $this->regTable WHERE Approval='0' ");
+			return $sql;
+
+		}
+
+		public function get_all_users()
+		{
+
+			$sql = $this->dbase->query("SELECT * FROM $this->regTable ");
 			return $sql;
 
 		}

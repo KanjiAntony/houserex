@@ -82,7 +82,7 @@ require_once("includes/initialise.php");
     										<div class="row">
     											<div class="col-lg-12">
     												<div class="wrap-custom-file">
-    												    <img src="assets/php/<?php echo $database->session_user_pic; ?>" width="150px" height="150px">
+    												    <img src="<?php echo $database->session_user_pic; ?>" width="150px" height="150px">
     												    <input type="hidden" id="update_profile_pic_user_id" value="<?php echo $database->session_user_id; ?>">
     												    <input type="file" name="image1" id="image1" accept=".gif, .jpg, .png"/>
     												    <label  for="image1" style="background-image: url('');">

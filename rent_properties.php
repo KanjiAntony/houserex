@@ -513,10 +513,8 @@ require_once("includes/initialise.php");
 					</div>
 				</div>
 				<div class="col-lg-6">
-					<div class="listing_list_style mb20-xsd tal-991">
-						
-					</div>
-					<div class="dn db-991 mt30 mb0">
+
+					<div class="dn db-991 mt60 mb0">
 						<div id="main2">
 							<span id="open2" class="flaticon-filter-results-button filter_open_btn style2"> Show Filter</span>
 						</div>

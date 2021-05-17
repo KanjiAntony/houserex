@@ -5,9 +5,9 @@
 	class session {
 
 		public $session_id;
-		public $client_session_id;
+		public $admin_session_id;
 		public $is_logged = false;
-		public $is_client_logged = false;
+		public $is_admin_logged = false;
 
 
 		public function __construct()
@@ -17,7 +17,7 @@
 			}
 
 			$this->check_login();
-			$this->check_client_login();
+			$this->check_admin_login();
 		}
 
 
@@ -29,11 +29,11 @@
 
 		}
 		
-		public function client_login($user_id)
+		public function admin_login($user_id)
 		{
 
-			$this->client_session_id = $_SESSION["client_user_id"] = $user_id;
-			$this->is_client_logged = true;
+			$this->admin_session_id = $_SESSION["admin_user_id"] = $user_id;
+			$this->is_admin_logged = true;
 
 		}
 
@@ -49,13 +49,13 @@
 
 		}
 		
-		public function logout_client($redirect_url)
+		public function logout_admin($redirect_url)
 		{
 
-			if($this->is_client_logged) {
-				unset($this->client_session_id);
-				unset($_SESSION["client_user_id"]);
-				$this->is_client_logged = false;
+			if($this->is_admin_logged) {
+				unset($this->admin_session_id);
+				unset($_SESSION["admin_user_id"]);
+				$this->is_admin_logged = false;
 				header("Location: ".$redirect_url);
 			}
 
@@ -66,9 +66,9 @@
 			return $this->is_logged;
 		}
 		
-		public function is_client_logged()
+		public function is_admin_logged()
 		{
-			return $this->is_client_logged;
+			return $this->is_admin_logged;
 		}
 
 		public function check_login()
@@ -84,15 +84,15 @@
 
 		}
 		
-		public function check_client_login()
+		public function check_admin_login()
 		{
 
-			if(isset($_SESSION["client_user_id"])) {
-				$this->client_session_id = $_SESSION["client_user_id"];
-				$this->is_client_logged = true;
+			if(isset($_SESSION["admin_user_id"])) {
+				$this->admin_session_id = $_SESSION["admin_user_id"];
+				$this->is_admin_logged = true;
 			} else {
-				unset($this->client_session_id);
-				$this->is_client_logged = false;
+				unset($this->admin_session_id);
+				$this->is_admin_logged = false;
 			}
 
 		}
