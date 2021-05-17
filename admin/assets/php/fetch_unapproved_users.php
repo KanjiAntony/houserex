@@ -39,7 +39,7 @@ require_once("../../../includes/initialise.php");
 																	<h4>'.$row['UserName'].'</h4>
 																	<h4>'.$row['UserEmail'].'</h4>
 																	<p>'.$row['UserMobile'].'</p>
-																	<a class="fp_price text-thm" href="#">Reg using: '.$row['RegType'].'</small></a>
+																	<a class="fp_price text-thm" href="#">Reg : '.$row['RegType'].'</small></a>
 																</div>
 															</div>
 														</div>

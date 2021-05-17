@@ -70,3 +70,6 @@ Stack trace:
   thrown in /var/www/houserex.co.uk/includes/database.php on line 1159
 [17-May-2021 09:31:50 Africa/Nairobi] PHP Notice:  Uninitialized string offset: 52 in /var/www/houserex.co.uk/includes/automation.php on line 24
 [17-May-2021 11:48:44 Africa/Nairobi] PHP Notice:  Uninitialized string offset: 52 in /var/www/houserex.co.uk/includes/automation.php on line 24
+[17-May-2021 15:32:57 Africa/Nairobi] PHP Warning:  Invalid argument supplied for foreach() in /var/www/houserex.co.uk/assets/php/fetch_user_properties.php on line 20
+[17-May-2021 15:33:50 Africa/Nairobi] PHP Warning:  Invalid argument supplied for foreach() in /var/www/houserex.co.uk/assets/php/fetch_user_properties.php on line 20
+[17-May-2021 15:39:47 Africa/Nairobi] PHP Warning:  Invalid argument supplied for foreach() in /var/www/houserex.co.uk/assets/php/fetch_user_properties.php on line 20

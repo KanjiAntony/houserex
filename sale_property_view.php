@@ -947,7 +947,7 @@ function geocodeAddressForStreetView(geocoder) {
 									</div>
 									<div class="fp_footer">
 										<ul class="fp_meta float-left mb0">
-											<li class="list-inline-item"><a href="#"><img src="assets/php/<?php echo $database->session_user_pic; ?>" alt=""></a></li>
+											<li class="list-inline-item"><a href="#"><img width="45px" height="45px" src="<?php echo $database->session_user_pic; ?>" alt=""></a></li>
 											<li class="list-inline-item"><a href="#"><?php echo $database->session_username; ?></a></li>
 										</ul>
 										
@@ -973,7 +973,7 @@ function geocodeAddressForStreetView(geocoder) {
 							<div class="sl_creator">
 								<h4 class="mb25">Listed By</h4>
 								<div class="media">
-									<img class="mr-3" src="assets/php/<?php echo $database->session_user_pic; ?>" alt="lc1.png">
+									<img class="mr-3" src="<?php echo $database->session_user_pic; ?>" alt="">
 									<div class="media-body">
 								    	<h5 class="mt-0 mb0"><?php echo $database->session_username; ?></h5>
 								    	<p class="mb0"><?php echo $database->session_user_phone; ?></p>

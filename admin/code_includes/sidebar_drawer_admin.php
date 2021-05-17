@@ -23,6 +23,6 @@
 			  <li class="title"><span>Manage Account</span></li>
 		    <li><a href=""><i class="flaticon-box"></i> <span>My Package</span></a></li>
 		    <li><a href="my_profile.php"><i class="flaticon-user"></i> <span>My Profile</span></a></li>
-		    <li><a href=""><i class="flaticon-logout"></i> <span>Logout</span></a></li>
+		    <li><a href="logout.php"><i class="flaticon-logout"></i> <span>Logout</span></a></li>
 	    </ul>
     </div>

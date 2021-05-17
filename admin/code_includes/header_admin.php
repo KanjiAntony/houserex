@@ -39,7 +39,7 @@
 							    	<p><?php echo $database->session_username; ?> <br><span class="address"><?php echo $database->session_email; ?></span></p>
 						    	</div>
 						    	<div class="user_setting_content">
-									<a class="dropdown-item active" href="" style="color:#000;">Dashboard</a>
+									<a class="dropdown-item active" href="index.php" style="color:#000;">Dashboard</a>
 									<a class="dropdown-item" href="my_properties.php" style="color:#000;">My Properties</a>
 									<a class="dropdown-item" href="" style="color:#000;">My Message</a>
 									<a class="dropdown-item" href="" style="color:#000;">My Review</a>

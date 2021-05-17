@@ -269,7 +269,7 @@ if(isset($_GET["id"])) {
 						<div class="col-lg-12">
 							<div class="feat_property list style2 agent">
 								<div class="thumb">
-									<img class="img-whp" src="assets/php/<?php echo $database->session_user_pic; ?>" alt="">
+									<img class="img-whp" src="<?php echo $database->session_user_pic; ?>" alt="">
 									<div class="thmb_cntnt">
 										<ul class="tag mb0">
 											<li class="list-inline-item dn"></li>
@@ -365,7 +365,7 @@ if(isset($_GET["id"])) {
 													</div>
 													<div class="fp_footer">
                 										<ul class="fp_meta float-left mb0">
-                											<li class="list-inline-item"><a href="#"><img src="assets/php/<?php echo $database->session_user_pic; ?>" alt=""></a></li>
+                											<li class="list-inline-item"><a href="#"><img width="45px" height="45px" src="<?php echo $database->session_user_pic; ?>" alt=""></a></li>
                 											<li class="list-inline-item"><a href="#"><?php echo $database->session_username; ?></a></li>
                 										</ul>
                 										

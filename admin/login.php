@@ -64,7 +64,7 @@ require_once("../includes/initialise.php");
 									<div class="heading">
 										<h4>Login</h4>
 									</div>
-									<hr>
+									
 									<form method="post" id="login_user">	
 									<h2 id="login_dummy_loading_text"></h2>
 										<h2 id="login_dummy_loading" style='color:#1d293e;'></h2>

@@ -62,7 +62,7 @@ require_once("../../includes/initialise.php");
 								</div>
 								<div class="fp_footer">
 									<ul class="fp_meta float-left mb0">
-										<li class="list-inline-item"><a href="rent_property_view.php?id='.$row['PID'].'"><img src="assets/php/'.$database->session_user_pic.'" alt=""></a></li>
+										<li class="list-inline-item"><a href="rent_property_view.php?id='.$row['PID'].'"><img width="45px" height="45px" src="'.$database->session_user_pic.'" alt=""></a></li>
 										<li class="list-inline-item"><a href="rent_property_view.php?id='.$row['PID'].'">'.$database->session_username.'</a></li>
 									</ul>
 									<ul class="icon mb0 float-right">
@@ -132,7 +132,7 @@ require_once("../../includes/initialise.php");
         									</div>
         									<div class="fp_footer">
         										<ul class="fp_meta float-left mb0">
-        											<li class="list-inline-item"><a href="sale_property_view.php?id='.$row['PID'].'"><img src="assets/php/'.$database->session_user_pic.'" alt=""></a></li>
+        											<li class="list-inline-item"><a href="sale_property_view.php?id='.$row['PID'].'"><img width="45px" height="45px" src="'.$database->session_user_pic.'" alt=""></a></li>
         											<li class="list-inline-item"><a href="sale_property_view.php?id='.$row['PID'].'">'.$database->session_username.'</a></li>
 
 																									

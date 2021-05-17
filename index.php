@@ -323,17 +323,12 @@ function onSignIn(googleUser) {
 		      		</div>
 					<div class="tab-content container" id="myTabContent">
 					  	<div class="row mt25 tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-					  		<div class="col-lg-6 col-xl-6">
-					  			<div class="login_thumb">
-					  				<img class="img-fluid w100" src="images/resource/login.jpg" alt="login.jpg">
-					  			</div>
+					  		 <div class="col-lg-2 col-xl-2">
+					  			
 					  		</div>
-					  		<div class="col-lg-6 col-xl-6">
+					  		<div class="col-lg-8 col-xl-8">
 								<div class="login_form">
 									
-										<div class="heading">
-											<h4>Login</h4>
-										</div>
 										<div class="row mt25">
 											<div class="col-lg-12">
 												
@@ -373,20 +368,17 @@ function onSignIn(googleUser) {
 					  		</div>
 					  	</div>
 					  	<div class="row mt25 tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-					  		<div class="col-lg-6 col-xl-6">
-					  			<div class="regstr_thumb">
-					  				<img class="img-fluid w100" src="images/resource/regstr.jpg" alt="regstr.jpg">
-					  			</div>
-					  		</div>
-					  		<div class="col-lg-6 col-xl-6">
+						  <div class="col-lg-2 col-xl-2">
+					  			
+								  </div>
+								  <div class="col-lg-8 col-xl-8">
 								<div class="sign_up_form">
 									<div class="heading">
 										<h4>Register</h4>
 									</div>
 																			
 									<form method="post" id="register_user">	
-										<hr>
-										
+																				
 										<h2 id="reg_dummy_loading_text"></h2>
                                             <h2 id="reg_dummy_loading" style='color:#1d293e;'></h2>
                     
@@ -999,7 +991,7 @@ function onSignIn(googleUser) {
   									if(!$session->is_logged){
 								
 								?>
-								<div class="text-center" style="position:absolute;bottom:5px;margin-left:37%;">
+								<div class="text-center" style="position:absolute;bottom:5px;margin-left:33%;">
 									<a href="" class="btn btn-thm" data-toggle="modal" data-target=".bd-example-modal-lg" >Sign up</a>
 								</div>
 								<?php } ?>
@@ -1007,7 +999,7 @@ function onSignIn(googleUser) {
 						</div>
 						
 						<div class="col-lg-4 col-12 item">
-							<div class="why_chose_us style2" style="min-height:400px;">
+							<div class="why_chose_us style2" style="min-height:500px;">
 							    
 							    <h4><strong>FOR PROFESSIONALS</strong></h4>
 
@@ -1027,7 +1019,7 @@ function onSignIn(googleUser) {
   									if(!$session->is_logged){
 								
 								?>
-								<div class="text-center" style="position:absolute;bottom:5px;margin-left:37%;">
+								<div class="text-center" style="position:absolute;bottom:5px;margin-left:33%;">
 									<a href="" class="btn btn-thm" data-toggle="modal" data-target=".bd-example-modal-lg" >Sign up</a>
 								</div>
 								<?php } ?>	
@@ -1053,7 +1045,7 @@ function onSignIn(googleUser) {
   									if(!$session->is_logged){
 								
 								?>
-								<div class="text-center" style="position:absolute;bottom:5px;margin-left:37%;">
+								<div class="text-center" style="position:absolute;bottom:5px;margin-left:33%;">
 									<a href="" class="btn btn-thm" data-toggle="modal" data-target=".bd-example-modal-lg" >Sign up</a>
 								</div>
 								<?php } ?>	

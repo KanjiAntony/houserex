@@ -63,7 +63,7 @@
 		       
 		        <ul id="respMenu" class="ace-responsive-menu text-left" data-menu-style="horizontal">
 		            <li style="position:relative;left:-13%;">
-		                <a href=""><span class="title">Buy</span></a>
+		                <a href="sale_properties.php"><span class="title">Buy</span></a>
 		                
 		                <ul>
 		                    <li><a href="sale_properties.php">Find property for sale</a></li>
@@ -83,7 +83,7 @@
 		            </li>-->
 		            
 		            <li style="position:relative;left:-13%;">
-		                <a href=""><span class="title">Rent</span></a>
+		                <a href="rent_properties.php"><span class="title">Rent</span></a>
 		                
 		                <ul>
 		                    <li>

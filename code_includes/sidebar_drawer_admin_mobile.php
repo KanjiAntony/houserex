@@ -9,9 +9,9 @@
 										<li><a href=""><span class="flaticon-magnifying-glass"></span> Saved Search</a></li>
 										<li><a href=""><span class="flaticon-chat"></span> My Reviews</a></li>
 										<li><a href=""><span class="flaticon-box"></span> My Package</a></li>
-										<li><a href=""><span class="flaticon-user"></span> My Profile</a></li>
-										<li class="active"><a href=""><span class="flaticon-filter-results-button"></span> Add New Listing</a></li>
-										<li><a href=""><span class="flaticon-logout"></span> Logout</a></li>
+										<li><a href="my_profile.php"><span class="flaticon-user"></span> My Profile</a></li>
+										<li><a href="page-add-new-property.php"><span class="flaticon-filter-results-button"></span> Add New Listing</a></li>
+										<li><a href="logout.php"><span class="flaticon-logout"></span> Logout</a></li>
 									</ul>
 								</div>
 							</div>
